@@ -157,7 +157,7 @@ def design_digital_filter(order, f1, f2=None, fs=1.0, filter_type='bandstop'):
     order : int       Order of IIR filter.
     f1 : float        Low cutoff (Hz) or single cutoff.
     f2 : float, opt.  High cutoff (Hz) for bandpass/bandstop.
-    fs : float        Sampling frequency (Hz).
+    fs : float        Sampling frequency of the sensor (Hz).
     filter_type : str Type of filter ('lowpass', etc.).
 
     Returns:
@@ -294,7 +294,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Sample Number")
     ax.set_ylabel("Sensor Reading")
-    ax.set_title("Change in Sensor Readings Over Consecutive Samples")
+    ax.set_title("Sensor Data With Lowpass Butterworth Filter Applied")
 
     ax.set_xlim(left=0)
     ax.legend(ncol=4, loc='upper center', bbox_to_anchor=(0.5, -0.16))
@@ -302,7 +302,7 @@ if __name__ == '__main__':
     plt.tight_layout()
 
     fig.savefig(
-        "sensor_change_over_consecutive_samples.pdf",
+        "filtered_sensor_data.png",
         dpi=600,
         #bbox_inches='tight',
     )
